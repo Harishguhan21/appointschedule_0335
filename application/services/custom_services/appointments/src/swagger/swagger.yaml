@@ -1,0 +1,239 @@
+---
+openapi: 3.0.0
+info:
+   version: 1.3.0
+   title: appointschedule open api specification
+   description: appointments API
+   termsOfService: http://api_url/terms/
+   contact:
+      name: ContactName
+      email: hello@wolox.co
+      url: https://www.wolox.com.ar/
+   license:
+      name: Apache 2.0
+      url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+   - url: http://localhost:8011
+     description: appointments
+tags:
+- name: appointments
+- name: user
+paths:
+   "/appointments/{id}":
+      delete:
+         tags:
+         -  appointments
+         description: GpDelete
+         parameters:
+         -  in: "path"
+            description: GpDelete
+            name: id
+            required: true
+            schema:
+               type: "string"
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+      get:
+         tags:
+         -  appointments
+         description: GpGetEntityById
+         parameters:
+         -  in: "path"
+            description: GpGetEntityById
+            name: id
+            required: true
+            schema:
+               type: "string"
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+   "/appointments/get/search":
+      get:
+         tags:
+         -  appointments
+         description: GpSearch
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+   "/appointments/get/update":
+      put:
+         tags:
+         -  appointments
+         description: GpSearchForUpdate
+         requestBody:
+            content:
+               application/json:
+                  schema:
+                     $ref: "#/components/schemas/appointments"
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+   "/appointments":
+      put:
+         tags:
+         -  appointments
+         description: GpUpdate
+         requestBody:
+            content:
+               application/json:
+                  schema:
+                     $ref: "#/components/schemas/appointments"
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+      get:
+         tags:
+         -  appointments
+         description: GpGetAllValues
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+      post:
+         tags:
+         -  appointments
+         description: GpCreate
+         requestBody:
+            content:
+               application/json:
+                  schema:
+                     $ref: "#/components/schemas/appointments"
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+   "/appointments/userid/created_by":
+      get:
+         tags:
+         -  appointments
+         description: GpGetNounCreatedBy
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+components:
+   schemas:
+      appointments:
+         type: object
+         properties:
+            canceler:
+               type: "string"
+               description: this relation user entity
+            chatmessages:
+               type: "string"
+               description: Description
+            customer:
+               type: "string"
+               description: Description
+            end:
+               type: "string"
+               description: Description
+            canceledat:
+               type: "date"
+               description: Description
+            statuss:
+               type: "string"
+               description: Description
+            work:
+               type: "string"
+               description: Description
+            exchangerequest:
+               type: "string"
+               description: Description
+            ids:
+               type: "string"
+               description: Description
+            invoice:
+               type: "string"
+               description: Description
+            provider:
+               type: "string"
+               description: Description
+            start:
+               type: "string"
+               description: Description
+      user:
+         type: object
+         properties:
+            city:
+               type: "string"
+               description: Description
+            email:
+               type: "string"
+               description: Description
+            firstname:
+               type: "string"
+               description: Description
+            ids:
+               type: "number"
+               description: Description
+            lastname:
+               type: "string"
+               description: Description
+            mobile:
+               type: "string"
+               description: Description
+            notifications:
+               type: "string"
+               description: Description
+            passwords:
+               type: "string"
+               description: Description
+            postcode:
+               type: "string"
+               description: Description
+            roles:
+               type: "string"
+               description: Description
+            street:
+               type: "string"
+               description: Description
+            username:
+               type: "string"
+               description: Description

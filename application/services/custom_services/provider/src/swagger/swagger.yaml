@@ -1,0 +1,281 @@
+---
+openapi: 3.0.0
+info:
+   version: 1.3.0
+   title: appointschedule open api specification
+   description: provider API
+   termsOfService: http://api_url/terms/
+   contact:
+      name: ContactName
+      email: hello@wolox.co
+      url: https://www.wolox.com.ar/
+   license:
+      name: Apache 2.0
+      url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+   - url: http://localhost:8015
+     description: provider
+tags:
+- name: provider
+- name: workingPlan
+- name: dayplan
+- name: timeperoid
+- name: localtime
+paths:
+   "/provider/{id}":
+      delete:
+         tags:
+         -  provider
+         description: GpDelete
+         parameters:
+         -  in: "path"
+            description: GpDelete
+            name: id
+            required: true
+            schema:
+               type: "string"
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+      get:
+         tags:
+         -  provider
+         description: GpGetEntityById
+         parameters:
+         -  in: "path"
+            description: GpGetEntityById
+            name: id
+            required: true
+            schema:
+               type: "string"
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+   "/provider/get/search":
+      get:
+         tags:
+         -  provider
+         description: GpSearch
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+   "/provider/get/update":
+      put:
+         tags:
+         -  provider
+         description: GpSearchForUpdate
+         requestBody:
+            content:
+               application/json:
+                  schema:
+                     $ref: "#/components/schemas/provider"
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+   "/provider":
+      put:
+         tags:
+         -  provider
+         description: GpUpdate
+         requestBody:
+            content:
+               application/json:
+                  schema:
+                     $ref: "#/components/schemas/provider"
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+      get:
+         tags:
+         -  provider
+         description: GpGetAllValues
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+      post:
+         tags:
+         -  provider
+         description: GpCreate
+         requestBody:
+            content:
+               application/json:
+                  schema:
+                     $ref: "#/components/schemas/provider"
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+   "/provider/userid/created_by":
+      get:
+         tags:
+         -  provider
+         description: GpGetNounCreatedBy
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+components:
+   schemas:
+      provider:
+         type: object
+         properties:
+            appointments:
+               type: "string"
+               description: Description
+            city:
+               type: "string"
+               description: Description
+            corporateworks:
+               type: "string"
+               description: Description
+            email:
+               type: "string"
+               description: Description
+            firstname:
+               type: "string"
+               description: Description
+            ids:
+               type: "number"
+               description: Description
+            lastname:
+               type: "string"
+               description: Description
+            mobile:
+               type: "string"
+               description: Description
+            notifications:
+               type: "string"
+               description: Description
+            passwords:
+               type: "string"
+               description: Description
+            postcode:
+               type: "string"
+               description: Description
+            retailworks:
+               type: "string"
+               description: Description
+            roles:
+               type: "string"
+               description: Description
+            username:
+               type: "string"
+               description: Description
+            workingplan:
+               type: "string"
+               description: Description
+            works:
+               type: "string"
+               description: Description
+      workingPlan:
+         type: object
+         properties:
+            friday:
+               type: "string"
+               description: Description
+            ids:
+               type: "number"
+               description: Description
+            monday:
+               type: "string"
+               description: Description
+            provider:
+               type: "string"
+               description: Description
+            saturday:
+               type: "string"
+               description: Description
+            sunday:
+               type: "string"
+               description: Description
+            thursday:
+               type: "string"
+               description: Description
+            tuesday:
+               type: "string"
+               description: Description
+            wednesday:
+               type: "string"
+               description: Description
+      dayplan:
+         type: object
+         properties:
+            breaks:
+               type: "string"
+               description: Description
+            timeperoidswithbreaksexcluded:
+               type: "string"
+               description: Description
+            workinghours:
+               type: "string"
+               description: Description
+      timeperoid:
+         type: object
+         properties:
+            end:
+               type: "string"
+               description: Description
+            start:
+               type: "string"
+               description: Description
+      localtime:
+         type: object
+         properties:
+            hour:
+               type: "number"
+               description: Description
+            minute:
+               type: "number"
+               description: Description
+            nano:
+               type: "number"
+               description: Description
+            second:
+               type: "number"
+               description: Description
