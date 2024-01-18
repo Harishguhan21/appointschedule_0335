@@ -2,7 +2,7 @@
   /* width: 210px; */
   height: 100vh;
   /* background: linear-gradient(to bottom, #4b31ff, #00a9ff); */
-  background-color: #62B83D;
+  /* background-color: #62B83D; */
 }
 
 .nav-link {
@@ -26,10 +26,6 @@
   color: white !important;
   padding: 10px !important;
   margin-left: 20% !important;
-}
-
-.sidebar-nav{
-  /* background-color: ; */
 }
 .dropdown {
   margin-left: 5%;

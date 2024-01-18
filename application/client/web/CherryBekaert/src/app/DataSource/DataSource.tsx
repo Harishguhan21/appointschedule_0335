@@ -24,9 +24,9 @@ export default class DataSource extends React.Component<any, any> {
   }
 
   handleCardSelection = (item: any) => {
-    if (item.name === "Website-URL") {
-      this.showModal();
-    }
+    // if (item.name === "Website-URL") {
+    //   this.showModal();
+    // }
     this.setState({ selectedCard: item.id, selectCardDetails: item });
   };
 
@@ -59,6 +59,7 @@ export default class DataSource extends React.Component<any, any> {
   };
 
   render() {
+    console.log(this.props, "props from 213233");
     const fileIcon: any = require("../../assets/img/fileIcon.png");
     const filterIcon: any = require("../../assets/img/Filter.png");
     const googleDriveIcon: any = require("../../assets/img/google-drive.png");
@@ -92,6 +93,8 @@ export default class DataSource extends React.Component<any, any> {
       },
     ];
 
+    console.log(this.props, "props2Drive");
+
     return (
       <>
         {!this.state.isFormView ? (
@@ -118,7 +121,11 @@ export default class DataSource extends React.Component<any, any> {
                 </div>
                 <hr className="hr-line" />
                 <div className="btn-container">
-                  <button className="next-btn" onClick={this.handleNextPage}>
+                  <button
+                    className="next-btn"
+                    onClick={this.handleNextPage}
+                    style={{ backgroundColor: this.props.theme.color }}
+                  >
                     Next
                   </button>
                 </div>
@@ -127,6 +134,7 @@ export default class DataSource extends React.Component<any, any> {
                 <WebsiteModal
                   showModal={this.showModal}
                   handleClose={this.handleClose}
+                  theme={this.props.theme}
                 />
               ) : null}
             </div>
@@ -134,9 +142,15 @@ export default class DataSource extends React.Component<any, any> {
         ) : (
           <>
             {this.state.selectCardDetails.name === "Data-Base" ? (
-              <DatabaseForm handlePreviousPage={this.handlePreviousPage} />
+              <DatabaseForm
+                handlePreviousPage={this.handlePreviousPage}
+                theme={this.props.theme}
+              />
             ) : this.state.selectCardDetails.name === "Files" ? (
-              <FileUpload handlePreviousPage={this.handlePreviousPage} />
+              <FileUpload
+                handlePreviousPage={this.handlePreviousPage}
+                theme={this.props.theme}
+              />
             ) : this.state.selectCardDetails.name === "Website-URL" ? (
               <WebsiteModal
                 showModal={this.showModal}

@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 import "../DataSource.css";
-
 export default class DatabaseForm extends React.Component<any, any> {
+  constructor(props: any) {
+    super(props);
+  }
   render() {
+    console.log(this.props, "1234");
+
     return (
       <div className="data-source-container">
         <div className="data-container">
@@ -23,21 +27,108 @@ export default class DatabaseForm extends React.Component<any, any> {
             </div>
           </div>
           <hr className="hr-line" />
-          {/* <div className="card-container">
-                {cardData.map((item: any) => {
-                  return (
-                    <Card
-                      data={item}
-                      selected={this.state.selectedCard === item.id}
-                      onChange={() => this.handleCardSelection(item.id)}
-                    />
-                  );
-                })}
-              </div> */}
+          <div className="content-wrapper">
+            <div className="content">
+              <div>
+                <label className="label-content">Enter type : </label>
+              </div>
+              <div>
+                <input
+                  className="input-content"
+                  type="text"
+                  placeholder="Enter"
+                />
+              </div>
+            </div>
+            <div className="content">
+              <div>
+                <label className="label-content">Data type : </label>
+              </div>
+              <div>
+                <input
+                  className="input-content"
+                  type="text"
+                  placeholder="Enter"
+                />
+              </div>
+            </div>
+            <div className="content">
+              <div>
+                <label className="label-content">User Name : </label>
+              </div>
+              <div>
+                <input
+                  className="input-content"
+                  type="text"
+                  placeholder="Enter"
+                />
+              </div>
+            </div>
+            <div className="content">
+              <div>
+                <label className="label-content">Password : </label>
+              </div>
+              <div>
+                <input
+                  className="input-content"
+                  type="text"
+                  placeholder="Enter"
+                />
+              </div>
+            </div>
+            <div className="content">
+              <div>
+                <label className="label-content">Host : </label>
+              </div>
+              <div>
+                <input
+                  className="input-content"
+                  type="text"
+                  placeholder="Enter"
+                />
+              </div>
+            </div>
+            <div className="content">
+              <div>
+                <label className="label-content">Port : </label>
+              </div>
+              <div>
+                <input
+                  className="input-content"
+                  type="text"
+                  placeholder="Enter"
+                />
+              </div>
+            </div>
+            <div className="content">
+              <div>
+                <label className="label-content">Data Base : </label>
+              </div>
+              <div>
+                <input
+                  className="input-content"
+                  type="text"
+                  placeholder="Enter"
+                />
+              </div>
+            </div>
+          </div>
+
           <hr className="hr-line" />
           <div className="btn-container">
-            <button className="cancel-btn">cancel</button>
-            <button className="next-btn mx-2">Save</button>
+            <button
+              className="cancel-btn"
+              style={{ color: this.props.theme.color }}
+            >
+              cancel
+            </button>
+
+            <button
+              className="next-btn mx-2 "
+              style={{ backgroundColor: this.props.theme.color }}
+            >
+              Save
+            </button>
           </div>
         </div>
       </div>

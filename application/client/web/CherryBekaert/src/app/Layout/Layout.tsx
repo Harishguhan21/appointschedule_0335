@@ -12,8 +12,6 @@ import {
 } from "react-icons/io";
 import TopBar from "../TopBar/TopBar";
 import Content from "../Content/Content";
-
-// import Topbar from "../topbar/Topbar";
 import "./Layout.css";
 
 export class Layout extends React.Component<any, any> {
@@ -39,11 +37,29 @@ export class Layout extends React.Component<any, any> {
 
   render() {
     const sidebarWidth = !this.state.trigger ? "210px" : "60px";
-    const ibmLogo: any = require("../../assets/img/cherryImg.png");
+    const ibmLogo: any = require("../../assets/img/ibmImg.png");
+    const cherryLogo = require("../../assets/img/cherryImg.png");
+
+    const template = [
+      {
+        name: "CHERRY BEKAERT-ADMIN",
+        color: "#62B83D",
+        logo: cherryLogo,
+      },
+      {
+        name: "IBM-ADMIN",
+        color: "#1f70c1",
+        logo: ibmLogo,
+      },
+    ];
+
     return (
       <>
         <div style={{ display: "flex" }}>
-          <div className="sider" style={{ width: sidebarWidth }}>
+          <div
+            className="sider"
+            style={{ backgroundColor: template[1].color, width: sidebarWidth }}
+          >
             <Nav defaultActiveKey="/home" className="flex-column">
               {!this.state.trigger ? (
                 <>
@@ -51,7 +67,7 @@ export class Layout extends React.Component<any, any> {
                     style={{ padding: "14px", marginLeft: 20, marginTop: 10 }}
                   >
                     <img
-                      src={ibmLogo}
+                      src={template[1].logo}
                       width="120px"
                       height="80px"
                       alt="react-logo"
@@ -80,42 +96,11 @@ export class Layout extends React.Component<any, any> {
                     <IoIosChatbubbles style={{ color: "white" }} />
                     <Nav.Link>Chat</Nav.Link>
                   </div>
-                  {/* <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      position: "relative",
-                    }}
-                    onClick={this.handleToggle}
-                  >
-                    <NavDropdown
-                      title={
-                        <span>
-                          Tickets
-                          {this.state.toggle ? (
-                            <IoMdArrowDropdown style={{ marginLeft: "5px" }} />
-                          ) : (
-                            <IoMdArrowDropup style={{ marginLeft: "5px" }} />
-                          )}
-                        </span>
-                      }
-                      id="basic-nav-dropdown"
-                    >
-                      <NavDropdown.Item href="addticket">
-                        Add Ticket
-                      </NavDropdown.Item>
-                    </NavDropdown>
-                  </div> */}
-                  <div
-                    className="footer-open-content"
-                    // onClick={this.handleTrigger}
-                  >
-                    {/* {!this.state.trigger ? ( */}
+                  <div className="footer-open-content">
                     <>
                       <LuLogOut style={{ color: "white", fontSize: "1.5em" }} />
                       <span>Logout</span>
                     </>
-                    {/* ) : null} */}
                   </div>
                 </>
               ) : (
@@ -134,9 +119,9 @@ export class Layout extends React.Component<any, any> {
             </Nav>
           </div>
           <div style={{ width: "100%" }}>
-            <TopBar name="CHERRY BEKAERT-ADMIN" />
+            <TopBar name={template[1].name} />
             <div className="" style={{ height: "90vh", overflowY: "scroll" }}>
-              <Content />
+              <Content template={template[1]} />
             </div>
           </div>
         </div>

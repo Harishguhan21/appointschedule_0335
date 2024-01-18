@@ -3,6 +3,9 @@ import { IoIosArrowBack } from "react-icons/io";
 import "../DataSource.css";
 
 export default class FileUpload extends React.Component<any, any> {
+  constructor(props: any) {
+    super(props);
+  }
   render() {
     return (
       <div className="data-source-container">
@@ -19,7 +22,12 @@ export default class FileUpload extends React.Component<any, any> {
             </div>
 
             <div className="">
-              <button className="test-btn">Save</button>
+              <button
+                className="test-btn"
+                style={{ color: this.props.theme.color }}
+              >
+                Save
+              </button>
             </div>
           </div>
           <hr className="hr-line" />

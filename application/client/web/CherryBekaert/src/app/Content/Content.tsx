@@ -1,14 +1,15 @@
 // import Login from "app/login/login";
 import Signup from "../../app/signup/signup";
-import Login from "../../app/login/login"
+import Login from "../../app/login/login";
 import Template from "../../app/template/template";
 import React, { Suspense, useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import routes, { userRoutes } from "../../routes";
 import DataSource from "../../app/DataSource/DataSource";
 
-const Context = () => {
+const Context = (props: any) => {
   const [currentRoutes, setCurrentRoutes] = useState([]);
+  const [theme, setTheme] = useState(props.template);
 
   useEffect(() => {
     let currentScreens: any = [];
@@ -45,10 +46,16 @@ const Context = () => {
         <Switch>
           <Route
             exact
+            path={"/admin"}
+            key={0}
+            render={(props: any) => <DataSource {...props} theme={theme} />}
+          />
+          {/* <Route
+            exact
             path={"/"}
             key={0}
             render={(props: any) => <DataSource {...props} />}
-          />
+          /> */}
           <Route
             exact
             path={"/login"}
