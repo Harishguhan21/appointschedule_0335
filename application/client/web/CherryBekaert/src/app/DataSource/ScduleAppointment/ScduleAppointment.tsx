@@ -6,6 +6,8 @@ import StatusCellRenderer from "../Components/StatusCellRenderer";
 import "./schduleAppointment.css";
 import { FiEdit } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
+import TopBar from "app/TopBar/TopBar";
+import SideBar from "../Components/sidebar";
 export class ScduleAppointment extends React.Component<any, any> {
   columnDefs: any = [
     // { checkboxSelection: true, headerCheckboxSelection: true, width: 20 },
@@ -68,21 +70,39 @@ export class ScduleAppointment extends React.Component<any, any> {
 
   render() {
     return (
-      <div className="data-source-container">
-        <div className="schdule-appointment-container">
-          <div className="search-container">
-            <i className="search-icon">&#128269;</i>
-            <input
-              type="text"
-              className="search-input"
-              placeholder="Search Users By Name"
+      <>
+        <div className="d-flex">
+          <SideBar template={this.props.theme} />
+          <div className="content-container" style={{ width: "100%" }}>
+            <TopBar
+              name={this.props.theme.name}
+              btnColor={this.props.theme.color}
             />
-          </div>
-          <div className="mt-5">
-            <GridTable columnDefs={this.columnDefs} rowData={this.rowData} />
+            <div
+              className="data-source-container"
+              style={{ overflowY: "auto", maxHeight: "calc(100vh - 120px)" }}
+            >
+              {/* Adjust maxHeight based on your layout and design */}
+              <div className="schdule-appointment-container">
+                <div className="search-container">
+                  <i className="search-icon">&#128269;</i>
+                  <input
+                    type="text"
+                    className="search-input"
+                    placeholder="Search Users By Name"
+                  />
+                </div>
+                <div className="mt-5">
+                  <GridTable
+                    columnDefs={this.columnDefs}
+                    rowData={this.rowData}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }

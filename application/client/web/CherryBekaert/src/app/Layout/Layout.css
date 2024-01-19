@@ -8,18 +8,21 @@
 .nav-link {
   color: white !important;
 }
-
+.nav-container:hover {
+  cursor: pointer;
+  /* opacity: 0.5; */
+  background-color: #56a9fc;
+}
 .dropdown-menu.show {
   border: none !important;
   /* background: linear-gradient(to bottom, #2f5fff, #2372ff); */
   background-color: #1f70c1;
-
 }
 
 .dropdown-item:hover {
   /* background: linear-gradient(to bottom, #3C6DFF, #3976FF); */
   background-color: #1f70c1;
-  width: 75%
+  width: 75%;
 }
 
 .dropdown-item {

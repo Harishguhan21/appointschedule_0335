@@ -9,12 +9,21 @@ function TopBar(props: any) {
 
   const history = useHistory();
 
-  console.log(history,"history")
+  console.log(history, "history");
 
   console.log(props, "propfunc");
 
   return (
-    <div style={{ width: "100%", padding: "10px", color: "#FF5D00" }}>
+    <div
+      style={{
+        width: "100%",
+        padding: "10px",
+        color: "#FF5D00",
+        // position: "sticky",
+        // top: 0,
+        // zIndex: 5,
+      }}
+    >
       <Navbar variant="light">
         <Navbar.Brand>{props.name}</Navbar.Brand>
         <div className="profile-container">

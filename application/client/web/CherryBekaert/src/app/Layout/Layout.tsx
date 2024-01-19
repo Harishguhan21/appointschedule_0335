@@ -133,42 +133,8 @@ export class Layout extends React.Component<any, any> {
               btnColor={template.color}
               allProps={this.props}
             />
-
             <div className="" style={{ height: "90vh", overflowY: "scroll" }}>
-              {/* <Content template={template} /> */}
-
-              <BrowserRouter>
-                <Suspense fallback={<div>Loading...</div>}>
-                  <Switch>
-                    <Route
-                      exact
-                      path={"/"}
-                      key={0}
-                      render={(props: any) => <ScduleAppointment {...props} />}
-                    />
-                    <Route
-                      exact
-                      path={"/admin"}
-                      key={0}
-                      render={(props: any) => (
-                        <DataSource {...props} theme={template} />
-                      )}
-                    />
-                    {/* <Route
-                      exact
-                      path={"/login"}
-                      key={1}
-                      render={(props: any) => <Login {...props} />}
-                    />
-                    <Route
-                      exact
-                      path={"/signup"}
-                      key={2}
-                      render={(props: any) => <Signup {...props} />}
-                    /> */}
-                  </Switch>
-                </Suspense>
-              </BrowserRouter>
+              <Content template={template} />
             </div>
           </div>
         </div>

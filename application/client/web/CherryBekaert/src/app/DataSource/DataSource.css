@@ -1,10 +1,11 @@
 .data-source-container {
   background-color: #f0f2f5;
-  padding: 40px 40px;
+  padding: 20px 40px;
   min-height: 90vh;
+  /* z-index: 0; */
 }
 .data-container {
-  padding: 30px 30px;
+  padding: 20px 30px;
   background: white;
 }
 
@@ -36,7 +37,7 @@
   cursor: pointer;
 }
 .card-container {
-  padding: 30px 15%;
+  padding: 0px 10%;
   display: flex;
   flex-wrap: wrap;
 }

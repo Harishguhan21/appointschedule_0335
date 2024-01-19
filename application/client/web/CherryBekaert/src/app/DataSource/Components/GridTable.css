@@ -49,3 +49,8 @@
 .ag-ltr .ag-cell-focus:not(.ag-cell-range-selected):focus-within {
   border: none !important;
 }
+
+.ag-root-wrapper.ag-layout-normal {
+  border: none;
+  border-radius: 10px;
+}

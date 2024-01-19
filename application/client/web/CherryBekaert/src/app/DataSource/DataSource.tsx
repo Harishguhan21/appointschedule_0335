@@ -5,6 +5,8 @@ import "./DataSource.css";
 import DatabaseForm from "./DatabaseForm/DatabaseForm";
 import FileUpload from "./FileUpload/FileUpload";
 import WebsiteModal from "./website/WebsiteModal";
+import TopBar from "app/TopBar/TopBar";
+import SideBar from "./Components/sidebar";
 
 interface CardData {
   id: number;
@@ -98,68 +100,88 @@ export default class DataSource extends React.Component<any, any> {
 
     return (
       <>
-        {!this.state.isFormView ? (
-          <>
-            <div className="data-source-container">
-              <div className="data-container">
-                <div className="title-bar">
-                  <div className="arrow-icon" style={{ background: "#DDDCE3" }}>
-                    <IoIosArrowBack className="arrow-icons" />
+        <div className="d-flex">
+          <SideBar template={this.props.theme} />
+          <div className="" style={{ minHeight: "100vh", width: "100%" }}>
+            <TopBar
+              name={this.props.theme.name}
+              btnColor={this.props.theme.color}
+            />
+            {!this.state.isFormView ? (
+              <>
+                <div
+                  className="data-source-container"
+                  style={{
+                    overflowY: "auto",
+                    maxHeight: "calc(100vh - 120px)",
+                  }}
+                >
+                  <div className="data-container">
+                    <div className="title-bar">
+                      <div
+                        className="arrow-icon"
+                        style={{ background: "#DDDCE3" }}
+                      >
+                        <IoIosArrowBack className="arrow-icons" />
+                      </div>
+                      <h1 className="title-text">Data Source Explore</h1>
+                    </div>
+                    <hr className="hr-line" />
+                    <div className="card-container">
+                      {cardData.map((item: any) => {
+                        return (
+                          <Card
+                            data={item}
+                            selected={this.state.selectedCard === item.id}
+                            onChange={() => this.handleCardSelection(item)}
+                          />
+                        );
+                      })}
+                    </div>
+                    <hr className="hr-line" />
+                    <div className="btn-container">
+                      <button
+                        className="next-btn"
+                        onClick={this.handleNextPage}
+                        style={{ backgroundColor: this.props.theme.color }}
+                      >
+                        Next
+                      </button>
+                    </div>
                   </div>
-                  <h1 className="title-text">Data Source Explore</h1>
+                  {this.state.showModal ? (
+                    <WebsiteModal
+                      showModal={this.showModal}
+                      handleClose={this.handleClose}
+                      theme={this.props.theme}
+                    />
+                  ) : null}
                 </div>
-                <hr className="hr-line" />
-                <div className="card-container">
-                  {cardData.map((item: any) => {
-                    return (
-                      <Card
-                        data={item}
-                        selected={this.state.selectedCard === item.id}
-                        onChange={() => this.handleCardSelection(item)}
-                      />
-                    );
-                  })}
-                </div>
-                <hr className="hr-line" />
-                <div className="btn-container">
-                  <button
-                    className="next-btn"
-                    onClick={this.handleNextPage}
-                    style={{ backgroundColor: this.props.theme.color }}
-                  >
-                    Next
-                  </button>
-                </div>
+              </>
+            ) : (
+              <div
+                style={{ overflowY: "auto", maxHeight: "calc(100vh - 120px)" }}
+              >
+                {this.state.selectCardDetails.name === "Data-Base" ? (
+                  <DatabaseForm
+                    handlePreviousPage={this.handlePreviousPage}
+                    theme={this.props.theme}
+                  />
+                ) : this.state.selectCardDetails.name === "Files" ? (
+                  <FileUpload
+                    handlePreviousPage={this.handlePreviousPage}
+                    theme={this.props.theme}
+                  />
+                ) : this.state.selectCardDetails.name === "Website-URL" ? (
+                  <WebsiteModal
+                    showModal={this.showModal}
+                    handleClose={this.handleClose}
+                  />
+                ) : null}
               </div>
-              {this.state.showModal ? (
-                <WebsiteModal
-                  showModal={this.showModal}
-                  handleClose={this.handleClose}
-                  theme={this.props.theme}
-                />
-              ) : null}
-            </div>
-          </>
-        ) : (
-          <>
-            {this.state.selectCardDetails.name === "Data-Base" ? (
-              <DatabaseForm
-                handlePreviousPage={this.handlePreviousPage}
-                theme={this.props.theme}
-              />
-            ) : this.state.selectCardDetails.name === "Files" ? (
-              <FileUpload
-                handlePreviousPage={this.handlePreviousPage}
-                theme={this.props.theme}
-              />
-            ) : this.state.selectCardDetails.name === "Website-URL" ? (
-              <WebsiteModal
-                showModal={this.showModal}
-                handleClose={this.handleClose}
-              />
-            ) : null}
-          </>
-        )}
+            )}
+          </div>
+        </div>
       </>
     );
   }

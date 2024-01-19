@@ -36,7 +36,7 @@ export default class DatabaseForm extends React.Component<any, any> {
                 <input
                   className="input-content"
                   type="text"
-                  placeholder="Enter"
+                  placeholder="Enter Type"
                 />
               </div>
             </div>
@@ -48,7 +48,7 @@ export default class DatabaseForm extends React.Component<any, any> {
                 <input
                   className="input-content"
                   type="text"
-                  placeholder="Enter"
+                  placeholder="Enter DataType"
                 />
               </div>
             </div>
@@ -60,7 +60,7 @@ export default class DatabaseForm extends React.Component<any, any> {
                 <input
                   className="input-content"
                   type="text"
-                  placeholder="Enter"
+                  placeholder="Enter Username"
                 />
               </div>
             </div>
@@ -72,7 +72,7 @@ export default class DatabaseForm extends React.Component<any, any> {
                 <input
                   className="input-content"
                   type="text"
-                  placeholder="Enter"
+                  placeholder="Enter Password"
                 />
               </div>
             </div>
@@ -84,7 +84,7 @@ export default class DatabaseForm extends React.Component<any, any> {
                 <input
                   className="input-content"
                   type="text"
-                  placeholder="Enter"
+                  placeholder="Enter Host"
                 />
               </div>
             </div>
@@ -96,7 +96,7 @@ export default class DatabaseForm extends React.Component<any, any> {
                 <input
                   className="input-content"
                   type="text"
-                  placeholder="Enter"
+                  placeholder="Enter Port"
                 />
               </div>
             </div>
@@ -108,7 +108,7 @@ export default class DatabaseForm extends React.Component<any, any> {
                 <input
                   className="input-content"
                   type="text"
-                  placeholder="Enter"
+                  placeholder="Enter Database"
                 />
               </div>
             </div>
