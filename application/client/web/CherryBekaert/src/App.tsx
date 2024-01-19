@@ -1,3 +1,4 @@
+import Chat from "app/DataSource/Chat/Chat";
 import SideBar from "app/DataSource/Components/sidebar";
 import DataSource from "app/DataSource/DataSource";
 import ScduleAppointment from "app/DataSource/ScduleAppointment/ScduleAppointment";
@@ -31,17 +32,19 @@ const App = () => {
   const ibmLogo: any = require("./assets/img/ibmImg.png");
   const cherryLogo = require("./assets/img/cherryImg.png");
 
-  // const template = {
-  //   name: "IBM-ADMIN",
-  //   color: "#1f70c1",
-  //   logo: ibmLogo,
-  // };
-
   const template = {
-    name: "CHERRY BEKAERT-ADMIN",
-    color: "#62B83D",
-    logo: cherryLogo,
+    name: "IBM-ADMIN",
+    color: "#1f70c1",
+    lightbgColor:"#56a9fc",
+    logo: ibmLogo,
   };
+
+  // const template = {
+  //   name: "CHERRY BEKAERT-ADMIN",
+  //   color: "#62B83D",
+  //   lightbgColor: "#b4e89e",
+  //   logo: cherryLogo,
+  // };
 
   return (
     <>
@@ -62,24 +65,31 @@ const App = () => {
                   <Route
                     exact
                     path={"/admin"}
-                    key={0}
+                    key={1}
                     render={(props: any) => (
                       <DataSource {...props} theme={template} />
                     )}
                   />
                   <Route
                     exact
+                    path={"/chat"}
+                    key={2}
+                    render={(props: any) => (
+                      <Chat {...props} theme={template} />
+                    )}
+                  />
+                  <Route
+                    exact
                     path={"/login"}
-                    key={1}
+                    key={3}
                     render={(props: any) => <Login {...props} />}
                   />
                   <Route
                     exact
                     path={"/signup"}
-                    key={2}
+                    key={4}
                     render={(props: any) => <Signup {...props} />}
                   />
-
                   {/* <ProtectedRoute> */}
                   {/* {getRoutes(currentRoutes)} */}
                   {/* </ProtectedRoute> */}

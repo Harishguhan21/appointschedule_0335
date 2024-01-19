@@ -20,29 +20,10 @@ import "../../Layout/Layout.css";
 
 const SideBar = ({ template }: any) => {
   const history = useHistory();
-  console.log(history, "history777");
-  const location = useLocation();
 
-  useEffect(() => {
-    // Logic to handle route changes and trigger re-render if needed
-    console.log("Location changed:App", location.pathname);
-  }, [location]);
+  const pathName = window.location.pathname;
 
-  const ibmLogo: any = require("../../../assets/img/ibmImg.png");
-  const cherryLogo = require("../../../assets/img/cherryImg.png");
-
-  // const template = {
-  //   name: "IBM-ADMIN",
-  //   color: "#1f70c1",
-  //   logo: ibmLogo,
-  // };
-
-  // const template = {
-  //   name: "CHERRY BEKAERT-ADMIN",
-  //   color: "#62B83D",
-  //   logo: cherryLogo,
-  // };
-
+  console.log(pathName, "pathName");
   return (
     <>
       <div
@@ -68,17 +49,13 @@ const SideBar = ({ template }: any) => {
                 display: "flex",
                 alignItems: "center",
                 padding: "10px",
-                // marginLeft: "5%",
+                background: pathName === "/admin" ? template?.lightbgColor : "",
               }}
               className="nav-container"
+              onClick={() => history.push("/admin")}
             >
               <FaUser style={{ color: "white" }} />
-              <Nav.Link
-                className="nav-link"
-                onClick={() => history.push("/admin")}
-              >
-                Admin
-              </Nav.Link>
+              <Nav.Link className="nav-link">Admin</Nav.Link>
             </div>
             <div
               style={{
@@ -86,8 +63,10 @@ const SideBar = ({ template }: any) => {
                 alignItems: "center",
                 padding: "10px",
                 // marginLeft: "5%",
+                background: pathName === "/chat" ? template?.lightbgColor : "",
               }}
               className="sidebar-nav nav-container"
+              onClick={() => history.push("/chat")}
             >
               <IoIosChatbubbles style={{ color: "white" }} />
               <Nav.Link>Chat</Nav.Link>

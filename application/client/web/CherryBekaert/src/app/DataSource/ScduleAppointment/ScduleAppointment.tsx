@@ -44,9 +44,10 @@ export class ScduleAppointment extends React.Component<any, any> {
           id: any;
         };
       }) => (
-        <div className="flex">
+        <div className="d-flex">
           <button className="edit-btn">
-            <FiEdit /> <span className="">Edit</span>
+            <FiEdit style={{ color: this.props.theme.color }} />{" "}
+            <span className="mx-2">Edit</span>
           </button>
           <button className="delete-btn mx-2">
             <MdDelete style={{ color: "red" }} />
