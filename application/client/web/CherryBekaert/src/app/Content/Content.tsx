@@ -3,13 +3,22 @@ import Signup from "../../app/signup/signup";
 import Login from "../../app/login/login";
 import Template from "../../app/template/template";
 import React, { Suspense, useEffect, useState } from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect, useLocation } from "react-router-dom";
 import routes, { userRoutes } from "../../routes";
 import DataSource from "../../app/DataSource/DataSource";
+import ScduleAppointment from "app/DataSource/ScduleAppointment/ScduleAppointment";
 
 const Context = (props: any) => {
   const [currentRoutes, setCurrentRoutes] = useState([]);
   const [theme, setTheme] = useState(props.template);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    // Logic to handle route changes and trigger re-render if needed
+    console.log("Location changed:", location.pathname);
+  }, [location]);
+
 
   useEffect(() => {
     let currentScreens: any = [];
@@ -25,6 +34,8 @@ const Context = (props: any) => {
 
     setCurrentRoutes(currentScreens);
   }, [userRoutes]);
+
+  console.log(props,"props1231")
 
   const getRoutes = (routes: any[]) => {
     return routes.map((prop, key) => {
@@ -46,16 +57,16 @@ const Context = (props: any) => {
         <Switch>
           <Route
             exact
+            path={"/"}
+            key={0}
+            render={(props: any) => <ScduleAppointment {...props} />}
+          />
+          <Route
+            exact
             path={"/admin"}
             key={0}
             render={(props: any) => <DataSource {...props} theme={theme} />}
           />
-          {/* <Route
-            exact
-            path={"/"}
-            key={0}
-            render={(props: any) => <DataSource {...props} />}
-          /> */}
           <Route
             exact
             path={"/login"}

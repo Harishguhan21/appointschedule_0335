@@ -1,22 +1,37 @@
-import React, { Component } from "react";
+import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import { FaUserCircle } from "react-icons/fa";
-
+import { useHistory } from "react-router-dom";
 import "./TopBar.css";
 
-export class TopBar extends React.Component<any, any>  {
-  render() {
-    return (
-      <>
-        <div style={{ width: "100%", padding: "10px", color: "#FF5D00" }}>
-          <Navbar variant="light">
-            <Navbar.Brand>{this.props.name}</Navbar.Brand>
-            <FaUserCircle style={{ fontSize: "2em", cursor: "pointer" }} />
-          </Navbar>
+function TopBar(props: any) {
+  const location = window.location.pathname;
+
+  const history = useHistory();
+
+  console.log(history,"history")
+
+  console.log(props, "propfunc");
+
+  return (
+    <div style={{ width: "100%", padding: "10px", color: "#FF5D00" }}>
+      <Navbar variant="light">
+        <Navbar.Brand>{props.name}</Navbar.Brand>
+        <div className="profile-container">
+          <FaUserCircle style={{ fontSize: "2em", cursor: "pointer" }} />
+          {location === "/" ? (
+            <button
+              className="create-btn"
+              style={{ backgroundColor: props.btnColor }}
+              onClick={() => history.push("/admin")}
+            >
+              Create Type
+            </button>
+          ) : null}
         </div>
-      </>
-    );
-  }
+      </Navbar>
+    </div>
+  );
 }
 
 export default TopBar;

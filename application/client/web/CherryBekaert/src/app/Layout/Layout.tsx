@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Suspense } from "react";
 // import logo from "../../assets/img/ibmLogo.png";
 import { Nav, NavDropdown } from "react-bootstrap";
 import { FaUser, FaAngleDoubleRight, FaAngleDoubleLeft } from "react-icons/fa";
@@ -13,6 +13,16 @@ import {
 import TopBar from "../TopBar/TopBar";
 import Content from "../Content/Content";
 import "./Layout.css";
+import { useHistory } from "react-router-dom";
+import ScduleAppointment from "app/DataSource/ScduleAppointment/ScduleAppointment";
+import DataSource from "app/DataSource/DataSource";
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+  Redirect,
+  useLocation,
+} from "react-router-dom";
 
 export class Layout extends React.Component<any, any> {
   constructor(props: any) {
@@ -20,6 +30,7 @@ export class Layout extends React.Component<any, any> {
     this.state = {
       toggle: false,
       trigger: false,
+      render: false,
     };
   }
 
@@ -31,34 +42,32 @@ export class Layout extends React.Component<any, any> {
 
   handleTrigger = () => {
     this.setState({
-      trigger: !this.state.trigger,
+      render: !this.state.trigger,
     });
+    // this.props.history.push("/");
   };
 
   render() {
     const sidebarWidth = !this.state.trigger ? "210px" : "60px";
     const ibmLogo: any = require("../../assets/img/ibmImg.png");
     const cherryLogo = require("../../assets/img/cherryImg.png");
-
-    const template = [
-      {
-        name: "CHERRY BEKAERT-ADMIN",
-        color: "#62B83D",
-        logo: cherryLogo,
-      },
-      {
-        name: "IBM-ADMIN",
-        color: "#1f70c1",
-        logo: ibmLogo,
-      },
-    ];
+    // const template = {
+    //   name: "CHERRY BEKAERT-ADMIN",
+    //   color: "#62B83D",
+    //   logo: cherryLogo,
+    // };
+    const template = {
+      name: "IBM-ADMIN",
+      color: "#1f70c1",
+      logo: ibmLogo,
+    };
 
     return (
       <>
         <div style={{ display: "flex" }}>
           <div
             className="sider"
-            style={{ backgroundColor: template[1].color, width: sidebarWidth }}
+            style={{ backgroundColor: template.color, width: sidebarWidth }}
           >
             <Nav defaultActiveKey="/home" className="flex-column">
               {!this.state.trigger ? (
@@ -67,7 +76,7 @@ export class Layout extends React.Component<any, any> {
                     style={{ padding: "14px", marginLeft: 20, marginTop: 10 }}
                   >
                     <img
-                      src={template[1].logo}
+                      src={template.logo}
                       width="120px"
                       height="80px"
                       alt="react-logo"
@@ -119,9 +128,47 @@ export class Layout extends React.Component<any, any> {
             </Nav>
           </div>
           <div style={{ width: "100%" }}>
-            <TopBar name={template[1].name} />
+            <TopBar
+              name={template.name}
+              btnColor={template.color}
+              allProps={this.props}
+            />
+
             <div className="" style={{ height: "90vh", overflowY: "scroll" }}>
-              <Content template={template[1]} />
+              {/* <Content template={template} /> */}
+
+              <BrowserRouter>
+                <Suspense fallback={<div>Loading...</div>}>
+                  <Switch>
+                    <Route
+                      exact
+                      path={"/"}
+                      key={0}
+                      render={(props: any) => <ScduleAppointment {...props} />}
+                    />
+                    <Route
+                      exact
+                      path={"/admin"}
+                      key={0}
+                      render={(props: any) => (
+                        <DataSource {...props} theme={template} />
+                      )}
+                    />
+                    {/* <Route
+                      exact
+                      path={"/login"}
+                      key={1}
+                      render={(props: any) => <Login {...props} />}
+                    />
+                    <Route
+                      exact
+                      path={"/signup"}
+                      key={2}
+                      render={(props: any) => <Signup {...props} />}
+                    /> */}
+                  </Switch>
+                </Suspense>
+              </BrowserRouter>
             </div>
           </div>
         </div>

@@ -1,0 +1,51 @@
+.ag-header-viewport {
+  background-color: #f4f2ff !important;
+  font-weight: 300px;
+  font-size: larger;
+  height: 100vh !important;
+}
+
+.ag-header-cell-text {
+  font-size: 15px;
+}
+
+.ag-cell-value {
+  font-size: 15px;
+}
+
+.ag-ltr .ag-cell {
+  border-right: 1px solid white !important;
+}
+
+.ag-header-cell,
+.ag-header-group-cell {
+  border-right: 1px solid white !important;
+}
+
+.ag-theme-alpine .ag-filter-toolpanel-header,
+.ag-theme-alpine .ag-filter-toolpanel-search,
+.ag-theme-alpine .ag-status-bar,
+.ag-theme-alpine .ag-header-row,
+.ag-theme-alpine .ag-panel-title-bar-title,
+.ag-theme-alpine .ag-multi-filter-group-title-bar,
+.ag-theme-alpine-dark .ag-filter-toolpanel-header,
+.ag-theme-alpine-dark .ag-filter-toolpanel-search,
+.ag-theme-alpine-dark .ag-status-bar,
+.ag-theme-alpine-dark .ag-header-row,
+.ag-theme-alpine-dark .ag-panel-title-bar-title,
+.ag-theme-alpine-dark .ag-multi-filter-group-title-bar {
+  font-weight: 300 !important;
+}
+
+.ag-paging-panel {
+  /* background-color: red; */
+  padding: 25px 0;
+}
+
+.ag-theme-material {
+  height: 620px !important;
+}
+
+.ag-ltr .ag-cell-focus:not(.ag-cell-range-selected):focus-within {
+  border: none !important;
+}

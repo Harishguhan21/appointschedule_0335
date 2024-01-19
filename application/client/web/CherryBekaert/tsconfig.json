@@ -10,7 +10,7 @@
       "dom.iterable",
       "esnext"
     ],
-    "types": ["react-icons"],
+    "types": ["react-icons", "react-dropzone"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,

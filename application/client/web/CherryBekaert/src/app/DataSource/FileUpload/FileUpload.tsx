@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 import "../DataSource.css";
+import UploadFiles from "./UploadFileComponent";
 
 export default class FileUpload extends React.Component<any, any> {
   constructor(props: any) {
@@ -31,6 +32,8 @@ export default class FileUpload extends React.Component<any, any> {
             </div>
           </div>
           <hr className="hr-line" />
+
+          <UploadFiles theme={this.props.theme}/>
         </div>
       </div>
     );

@@ -38,6 +38,7 @@ export default class DataSource extends React.Component<any, any> {
     } else {
       this.showModal();
     }
+    // this.props.history.push("/");
   };
 
   handlePreviousPage = () => {

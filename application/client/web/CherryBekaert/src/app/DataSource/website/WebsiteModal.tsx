@@ -35,7 +35,10 @@ const WebsiteModal = ({ showModal, handleClose, theme }: any) => {
               className={`${!isChecked ? "disabled-btn" : "test-btn"}`}
               disabled={!isChecked}
               onClick={handleSaveLink}
-              style={{ backgroundColor: !isChecked ? "gray" : theme.color }}
+              style={{
+                backgroundColor: !isChecked ? "gray" : theme.color,
+                color: "white",
+              }}
             >
               Save
             </button>
