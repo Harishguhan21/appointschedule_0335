@@ -8,6 +8,7 @@ import { FiEdit } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
 import TopBar from "app/TopBar/TopBar";
 import SideBar from "../Components/sidebar";
+import TableWithCheckbox from "../Components/Table/Table";
 export class ScduleAppointment extends React.Component<any, any> {
   columnDefs: any = [
     // { checkboxSelection: true, headerCheckboxSelection: true, width: 20 },
@@ -94,9 +95,13 @@ export class ScduleAppointment extends React.Component<any, any> {
                   />
                 </div>
                 <div className="mt-5">
-                  <GridTable
+                  {/* <GridTable
                     columnDefs={this.columnDefs}
                     rowData={this.rowData}
+                  /> */}
+                  <TableWithCheckbox
+                    data={this.rowData}
+                    btnColor={this.props.theme.color}
                   />
                 </div>
               </div>

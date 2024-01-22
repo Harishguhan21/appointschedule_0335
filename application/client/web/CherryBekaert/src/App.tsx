@@ -32,19 +32,21 @@ const App = () => {
   const ibmLogo: any = require("./assets/img/ibmImg.png");
   const cherryLogo = require("./assets/img/cherryImg.png");
 
-  const template = {
-    name: "IBM-ADMIN",
-    color: "#1f70c1",
-    lightbgColor:"#56a9fc",
-    logo: ibmLogo,
-  };
-
   // const template = {
-  //   name: "CHERRY BEKAERT-ADMIN",
-  //   color: "#62B83D",
-  //   lightbgColor: "#b4e89e",
-  //   logo: cherryLogo,
+  //   name: "IBM-ADMIN",
+  //   color: "#1f70c1",
+  //   lightbgColor: "#56a9fc",
+  //   logo: ibmLogo,
+  //   organizationName: "IBM",
   // };
+
+  const template = {
+    name: "CHERRY BEKAERT-ADMIN",
+    color: "#62B83D",
+    lightbgColor: "#b4e89e",
+    logo: cherryLogo,
+    organizationName:'CHERRY BEKAERT'
+  };
 
   return (
     <>
