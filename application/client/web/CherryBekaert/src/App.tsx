@@ -31,6 +31,7 @@ const App = () => {
 
   const ibmLogo: any = require("./assets/img/ibmImg.png");
   const cherryLogo = require("./assets/img/cherryImg.png");
+  const tendlogo = require("./assets/img/10decodersImg.png");
 
   // const template = {
   //   name: "IBM-ADMIN",
@@ -40,12 +41,20 @@ const App = () => {
   //   organizationName: "IBM",
   // };
 
+  // const template = {
+  //   name: "CHERRY BEKAERT-ADMIN",
+  //   color: "#62B83D",
+  //   lightbgColor: "#b4e89e",
+  //   logo: cherryLogo,
+  //   organizationName: "CHERRY BEKAERT",
+  // };
+
   const template = {
-    name: "CHERRY BEKAERT-ADMIN",
-    color: "#62B83D",
-    lightbgColor: "#b4e89e",
-    logo: cherryLogo,
-    organizationName:'CHERRY BEKAERT'
+    name: "10-DECODERS-ADMIN",
+    color: "#04a4fc",
+    lightbgColor: "",
+    logo: tendlogo,
+    organizationName: "10-DECODERS",
   };
 
   return (
